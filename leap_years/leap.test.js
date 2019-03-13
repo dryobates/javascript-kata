@@ -1,12 +1,5 @@
 const [isLeap, NotGregorianYear] = require('./leap.js')
 
-// + nie podzielne przez 4 - nie przestępny
-// + podzielne przez 4 - przestępny
-// + podzielne przez 100 - nie przestępny
-// + podzielne przez 400 - przestępny
-// - przed 1583 - błąd - brak kalendarza gregoriańskiego
-// string lub float - konwersja na int
-
 test('is not leap when not divisible by 4', () => {
   expect(isLeap(2001)).toBe(false)
 })
@@ -25,4 +18,12 @@ test('is leap when divisible by 400', () => {
 
 test('raises not gregorian year when before 1583', () => {
   expect(() => { isLeap(1500) }).toThrow(NotGregorianYear)
+})
+
+test('converts to int when float', () => {
+  expect(isLeap(2004.0)).toBe(true)
+})
+
+test('converts to int when string', () => {
+  expect(isLeap('2004')).toBe(true)
 })

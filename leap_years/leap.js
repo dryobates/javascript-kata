@@ -1,16 +1,16 @@
 const FIRST_GREGORIAN_YEAR = 1583
 
-function isLeap (number) {
-  if (number < FIRST_GREGORIAN_YEAR) {
-    throw new NotGregorianYear('Before october 1582 there was no gregorian calendar. Given year: ' + number)
+function isLeap (year) {
+  if (year < FIRST_GREGORIAN_YEAR) {
+    throw new NotGregorianYear('Before october 1582 there was no gregorian calendar. Given year: ' + year)
   }
-  if ((number % 400) === 0) {
+  if ((year % 400) === 0) {
     return true
   }
-  if ((number % 100) === 0) {
+  if ((year % 100) === 0) {
     return false
   }
-  return ((number % 4) === 0)
+  return ((year % 4) === 0)
 }
 
 function NotGregorianYear (message) {
